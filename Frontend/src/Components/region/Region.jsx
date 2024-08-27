@@ -1,7 +1,36 @@
 import React from 'react'
+import './Region.css'
+import { useForm } from 'react-hook-form';
 function Region() {
+  let { register, handleSubmit, formState: { errors } } = useForm();
   return (
-    <div>Region</div>
+    <div>
+        <h1>Region</h1>
+        <div className='row'>
+        <div className='col-11 col-sm-10 col-md-6 mx-auto'>
+            <form action="" className='p-5 login rounded'>
+            <div className='mb-3'>
+         <label htmlFor="region" className='form-label'>Region</label>
+         <input type="text" id='region'{...register('region',{required:true})} className='form-control' />
+          {errors.region?.type==='required' && <p className='text-danger'>Region required</p>}
+        </div>
+        <div className='mb-3'>
+         <label htmlFor="village" className='form-label'>Village</label>
+         <input type="text" id='village'{...register('village',{required:true})} className='form-control' />
+          {errors.village?.type==='required' && <p className='text-danger'>Villagename required</p>}
+        </div>
+        <div className='mb-3'>
+         <label htmlFor="region" className='form-label'>State</label>
+         <input type="text" id='Region'{...register('region',{required:true})} className='form-control' />
+          {errors.username?.type==='required' && <p className='text-danger'>statename required</p>}
+        </div>
+        <div className='d-flex justify-content-evenly'>
+            <button className='btn btn-primary'>Select Region</button>
+        </div>
+      </form>
+      </div>
+    </div>
+    </div>
   )
 }
 
