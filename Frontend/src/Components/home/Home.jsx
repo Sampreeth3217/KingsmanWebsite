@@ -4,8 +4,8 @@ function Home(){
   return (
     <div className="text-center">
       <div className="d-flex">
-      <div className="image-container">
-  <img src="water.png" alt="Not available" />
+      <div className="image-container ">
+  <img src="water.png" alt="Not available" className="img-fluid" />
 </div>
         <div className="problem p-3 text-start">
           <h2>Problem Definition</h2>

@@ -5,8 +5,8 @@
 }
 .image-container {
     width: 4000px;;
-    height: 4000px;;
-    overflow: hidden;
+    height:auto;
+ overflow: hidden;
   }
 
  .image-container img{
