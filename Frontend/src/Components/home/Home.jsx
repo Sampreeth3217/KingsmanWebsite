@@ -3,11 +3,11 @@ import './Home.css'
 function Home(){
   return (
     <div className="text-center">
-      <div className="d-flex">
+      <div className="container w-100 h-100">
       <div className="image-container ">
-  <img src="water.png" alt="Not available" className="img-fluid" />
+  <img src="water2.png" alt="Not available" className="img-fluid p-3" />
 </div>
-        <div className="problem p-3 text-start">
+        <div className="problem text-start">
           <h2>Problem Definition</h2>
           <p>The primary problem addressed by this research and development project is the lack of proper water quality monitoring systems in rural areas, leading to potential health hazards. The absence of real-time information about water quality makes it challenging to ensure access to clean and safe drinking water, which is a fundamental human right. The proposed project aims to develop a solution that leverages Internet of Things (IoT) technology to monitor water quality efficiently and affordably.</p>
           <h2>Key Problems</h2>

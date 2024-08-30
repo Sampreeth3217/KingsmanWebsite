@@ -13,10 +13,13 @@ function Header() {
             <Link to="/login" className='nav-link text-white'><h5>Login</h5></Link>
           </li>
           <li className='nav-item'>
-            <Link to="/about" className='nav-link text-white'><h5>AboutUs</h5></Link>
+            <Link to="/region" className='nav-link text-white'><h5>Region</h5></Link>
           </li>
           <li className='nav-item'>
-            <Link to="/region" className='nav-link text-white'><h5>Region</h5></Link>
+            <Link to="/map" className='nav-link text-white'><h5>Map</h5></Link>
+          </li>
+          <li className='nav-item'>
+            <Link to="/about" className='nav-link text-white'><h5>AboutUs</h5></Link>
           </li>
       </ul>
     </div>

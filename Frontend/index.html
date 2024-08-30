@@ -8,6 +8,24 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx">
+      // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBWgaaWBp5EySLfeTP8SUJ9iEVB-9mewMI",
+  authDomain: "helloworld-a3b23.firebaseapp.com",
+  databaseURL: "https://helloworld-a3b23-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "helloworld-a3b23",
+  storageBucket: "helloworld-a3b23.appspot.com",
+  messagingSenderId: "543478462583",
+  appId: "1:543478462583:web:d4b02f4cb2c41af46fee72"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>
