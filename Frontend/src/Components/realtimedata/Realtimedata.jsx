@@ -12,9 +12,8 @@ export class Realtimedata extends React.Component {
             tableData: []
         };
     }
-
     componentDidMount() {
-        const dbref = ref(db, 'sensor-1');
+        const dbref = ref(db, 'sensors2');
         onValue(dbref, (snapshot) => {
             let records = [];
             snapshot.forEach(childSnapshot => {
