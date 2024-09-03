@@ -21,7 +21,7 @@ export class Realtimedata extends React.Component {
                 let data = childSnapshot.val();
                 records.push({ "key": keyName, "data": data });
             });
-            this.setState({ tableData: records });
+            this.setState({ tableData:records});
         });
     }
 
