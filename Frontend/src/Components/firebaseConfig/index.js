@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
-
 function StartFirebase() {  
     const firebaseConfig = {
         apiKey: "AIzaSyBWgaaWBp5EySLfeTP8SUJ9iEVB-9mewMI",
@@ -11,9 +10,7 @@ function StartFirebase() {
         messagingSenderId: "543478462583",
         appId: "1:543478462583:web:d4b02f4cb2c41af46fee72"
     };
-
     const app = initializeApp(firebaseConfig);
         return getDatabase(app);
     }
-
 export default StartFirebase;
