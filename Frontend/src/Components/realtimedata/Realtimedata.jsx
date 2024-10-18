@@ -10,19 +10,30 @@ export class Realtimedata extends React.Component {
         super(props);
         this.state = {
             data: null,
+            tooltipData: null,
         };
     }
 
     componentDidMount() {
         const dbref = ref(db, 'sensors2');
         onValue(dbref, (snapshot) => {
-            let data = snapshot.val();
+            const data = snapshot.val();
+            console.log('Data received from Firebase:', data); // Console log added
             this.setState({ data });
+        }, (error) => {
+            console.error('Error fetching data:', error); // Log any errors
         });
     }
 
-    render() {
+    handleRadioClick = () => {
         const { data } = this.state;
+        if (data) {
+            this.setState({ tooltipData: data });
+        }
+    }
+
+    render() {
+        const { tooltipData } = this.state;
         const { radioId } = this.props;
 
         return (
@@ -31,25 +42,25 @@ export class Realtimedata extends React.Component {
                     placement="top"
                     overlay={
                         <Tooltip id={`tooltip-${radioId}`}>
-                            {data ? (
-                                data.hasOwnProperty(`radio-${radioId}`) ? (
-                                    <div>
-                                        <p><strong>Key:</strong> {radioId}</p>
-                                        <p><strong>Data:</strong> {JSON.stringify(data[`radio-${radioId}`])}</p>
-                                    </div>
-                                ) : (
-                                    <p>No data available for this selection.</p>
-                                )
+                            {tooltipData ? (
+                                <div>
+                                    <p><strong>Key:</strong> {radioId}</p>
+                                    <p><strong>pH:</strong> {tooltipData.ph}</p>
+                                    <p><strong>TDS:</strong> {tooltipData.tds}</p>
+                                    <p><strong>Water Flow:</strong> {tooltipData.water_flow}</p>
+                                    <p><strong>Water Level:</strong> {tooltipData.water_level}</p>
+                                </div>
                             ) : (
                                 <p>Loading...</p>
                             )}
-                        </Tooltip>
+                        </Tooltip> 
                     }
                 >
                     <input
                         type="radio"
                         name="house"
                         className={`radio-button radio-${radioId}`}
+                        onClick={this.handleRadioClick}
                     />
                 </OverlayTrigger>
             </>
@@ -58,7 +69,6 @@ export class Realtimedata extends React.Component {
 }
 
 export default Realtimedata;
-
 // import React from "react";
 // import StartFirebase from "../firebaseConfig";
 // import { ref, onValue } from "firebase/database";

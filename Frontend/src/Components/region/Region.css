@@ -1,0 +1,94 @@
+/* Overall region container centering */
+.region-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a1a1a; /* Dark background */
+}
+
+/* Region box styling */
+.region-box {
+    background-color: #2b2b2b;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    color: white;
+}
+
+/* Region form styling */
+.region-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+}
+
+/* Form labels */
+.form-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Input fields */
+.form-control {
+    background-color: #1f1f1f;
+    color: #fff;
+    border: 2px solid #444;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Button container alignment */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Error text */
+.error-text {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .region-box {
+        width: 90%;
+    }
+}

@@ -6,7 +6,7 @@ function Header() {
   return (
     <div className='header'>
       <div className='logo'>
-        <h3>MyApp</h3>
+        <h3>Aquavigil</h3>
       </div>
       <ul className='nav justify-content-end'>
           <li className='nav-item'>

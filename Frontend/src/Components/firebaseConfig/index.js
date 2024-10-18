@@ -11,6 +11,8 @@ function StartFirebase() {
         appId: "1:543478462583:web:d4b02f4cb2c41af46fee72"
     };
     const app = initializeApp(firebaseConfig);
-        return getDatabase(app);
+    const database = getDatabase(app);
+    console.log('Firebase initialized:', database); // Check if Firebase initializes correctly
+    return database;
     }
 export default StartFirebase;
