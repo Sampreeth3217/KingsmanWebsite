@@ -1,73 +1,62 @@
 .container {
   position: relative;
   width: 100%;
-  max-width: 1024px;
+  max-width: 800px; /* Adjust as needed */
+  margin: 0 auto;
 }
+
+.map-wrapper {
+  position: relative;
+}
+
 .map-image {
   width: 100%;
   height: auto;
 }
+
+/* Radio buttons styled as circular dots and positioned on the map */
 .radio-button {
   position: absolute;
-  transform: translate(-50%, -50%);
-}
-.radio-1 {
-  top: 13.25%;
-  left: 29%;
-}
-.radio-2 {
-  top: 13.25%;
-  left: 44%;
-}
-.radio-3 {
-  top: 13.25%;
-  left: 64.5%;
-}
-.radio-4 {
-  top: 19%;
-  left: 74%;
-}
-.radio-5 {
-  top: 33.5%;
-  left: 71%;
-}
-
-.radio-6 {
-  top: 33%;
-  left: 49.75%;
-}
-
-.radio-7 {
-  top: 60%;
-  left: 81.75%;
-}
-
-.radio-8 {
-  top: 68.5%;
-  left: 35%;
-}
-
-.radio-9 {
-  top: 45%;
-  left: 7%;
-}
-
-.radio-10 {
-  top: 69.25%;
-  left: 18%;
-}
-.radio-button {
-  position: absolute;
-  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #007bff;
   cursor: pointer;
+  transition: background-color 0.3s;
+  opacity: 0.9;
 }
 
-.tooltip {
-  font-size: 14px;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 10px;
-  border-radius: 4px;
-  max-width: 200px;
-  word-wrap: break-word;
+.radio-button:hover {
+  background-color: #ddd;
+}
+
+.radio-button:checked {
+  background-color: #007bff;
+}
+
+/* Positioning the radio buttons on the map */
+.radio-1 {
+  top: 30%; /* Adjust according to map */
+  left: 25%;
+}
+
+.radio-2 {
+  top: 50%;
+  left: 40%;
+}
+
+.radio-3 {
+  top: 70%;
+  left: 60%;
+}
+
+.radio-4 {
+  top: 80%;
+  left: 30%;
+}
+
+/* Section for displaying sensor data */
+.sensor-data {
+  margin-top: 20px;
 }

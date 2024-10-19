@@ -1,34 +1,44 @@
-import React from "react";
+import React from 'react';
 import './Home.css';
-function Home() {
+
+const HomePage = () => {
   return (
-    <div className="text-center">
-      <div className="container w-100 h-100">
-        <div className="image-container">
-          <img src="water2.png" alt="Not available" className="img-fluid" />
-        </div>
-        <div className="problem text-start">
-          <h2>Problem Definition</h2>
-          <p>
-            The primary problem addressed by this research and development project is the lack of proper water quality monitoring systems in rural areas, leading to potential health hazards. The absence of real-time information about water quality makes it challenging to ensure access to clean and safe drinking water, which is a fundamental human right. The proposed project aims to develop a solution that leverages Internet of Things (IoT) technology to monitor water quality efficiently and affordably.
-          </p>
-          <h2>Key Problems</h2>
-          <h4>Limited Water Quality Monitoring:</h4>
-          <p>
-            Many rural areas lack effective water quality monitoring systems, making it difficult to detect and address potential issues promptly.
-          </p>
-          <h4>Health Hazards:</h4>
-          <p>
-            Without real-time information on water quality, communities are at risk of consuming contaminated water, leading to health problems.
-          </p>
-          <h4>Lack of Affordable Solutions:</h4>
-          <p>
-            Existing water quality monitoring systems are expensive and not easily accessible to rural communities with limited resources.
-          </p>
-        </div>
+    <div className="homepage-container">
+      {/* Hero Image */}
+      <div className="hero-image-container w-100 my-10">
+        <img src="water2.png" alt="Water Quality Monitoring" className="hero-image" />
       </div>
+
+      {/* Hero Content Section */}
+      <div className="hero-content">
+        <h1 className="hero-title">Real-time Water Quality Monitoring</h1>
+        <p className="hero-subtitle">
+          Leveraging IoT to provide affordable and efficient solutions for rural communities.
+        </p>
+        <a href="#learn-more" className="cta-button">Learn More</a>
+      </div>
+
+      {/* Problem Definition Section */}
+      <section className="problem-definition" id="learn-more">
+        <h2 className="section-title">Problem Definition</h2>
+        <p className="section-text">
+          The primary issue addressed by this research and development project is the lack of proper water quality monitoring systems in rural areas, leading to potential health hazards.
+        </p>
+
+        <h3 className="section-subtitle">Key Problems</h3>
+        <ul className="problem-list">
+          <li>Limited Water Quality Monitoring</li>
+          <li>Health Hazards</li>
+          <li>Lack of Affordable Solutions</li>
+        </ul>
+      </section>
+
+      {/* Footer */}
+      {/* <footer className="footer">
+        <p className="footer-text">© 2024 Water Quality Monitoring System. All rights reserved.</p>
+      </footer> */}
     </div>
   );
-}
+};
 
-export default Home;
+export default HomePage;

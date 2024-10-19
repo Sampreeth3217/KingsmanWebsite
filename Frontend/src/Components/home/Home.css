@@ -1,81 +1,153 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0; /* Light gray background */
-    color: #333; /* Dark text */
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #000, #333); 
+  color: #fff;
+}
+.homepage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px;
+/* Hero Image Section */
+.hero-image-container {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.image-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
 }
 
-.image-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
-    transition: transform 0.3s;
+.hero-image:hover {
+  transform: scale(1.05);
 }
 
-.image-container img:hover {
-    transform: scale(1.05); /* Zoom effect on hover */
+/* Hero Content Section */
+.hero-content {
+  text-align: center;
+  margin: 20px 0;
 }
 
-.problem-section {
-    background-color: #fff; /* White background */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: box-shadow 0.3s;
+.hero-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #fff;
 }
 
-.problem-section:hover {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ddd;
+  margin-bottom: 20px;
 }
 
-.problem-heading {
-    color: #000; /* Black for headings */
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    border-bottom: 2px solid #000; /* Underline effect */
-    padding-bottom: 10px;
+.cta-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.subheading {
-    color: #444; /* Dark gray for subheadings */
-    margin-top: 30px;
-    font-size: 1.8rem;
+.cta-button:hover {
+  background-color: #ffde59;
+  color: #000;
 }
 
-.problem-paragraph {
-    color: #666; /* Medium gray for paragraphs */
-    line-height: 1.7;
-    margin-bottom: 25px;
+/* Problem Definition Section */
+.problem-definition {
+  padding: 50px 0;
+  background-color: #222;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 30px 0;
 }
 
+.section-title {
+  font-size: 36px;
+  color: #ffde59; /* Accent color for the titles */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #bbb;
+  margin-bottom: 30px;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.section-subtitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffde59;
+  text-align: center;
+}
+
+.problem-list {
+  list-style-type: disc;
+  padding-left: 40px;
+  color: #ddd;
+}
+
+.problem-list li {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px 0;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  border-top: 1px solid #333;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
+  .hero-title {
+    font-size: 36px;
+  }
 
-    .problem-heading {
-        font-size: 2rem;
-    }
+  .hero-subtitle {
+    font-size: 16px;
+  }
 
-    .subheading {
-        font-size: 1.4rem;
-    }
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 20px;
+  }
+
+  .cta-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .section-text,
+  .problem-list {
+    text-align: left;
+    padding: 0 10px;
+  }
 }

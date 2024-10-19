@@ -1,119 +1,84 @@
-import React from "react";
+import React, { Component } from 'react';
 import StartFirebase from "../firebaseConfig";
 import { ref, onValue } from "firebase/database";
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+// import './Map.css';
 
 const db = StartFirebase();
 
-export class Realtimedata extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: null,
-            tooltipData: null,
-        };
-    }
+class MapWithSensorData extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+      selectedSensor: 'sensors1', // Default sensor
+    };
+  }
 
-    componentDidMount() {
-        const dbref = ref(db, 'sensors2');
-        onValue(dbref, (snapshot) => {
-            const data = snapshot.val();
-            console.log('Data received from Firebase:', data); // Console log added
-            this.setState({ data });
-        }, (error) => {
-            console.error('Error fetching data:', error); // Log any errors
-        });
-    }
+  componentDidMount() {
+    this.fetchSensorData(this.state.selectedSensor); // Fetch initial data for the default sensor
+  }
 
-    handleRadioClick = () => {
-        const { data } = this.state;
-        if (data) {
-            this.setState({ tooltipData: data });
-        }
-    }
+  fetchSensorData(sensorName) {
+    const dbref = ref(db, sensorName);
+    onValue(dbref, (snapshot) => {
+      const data = snapshot.val();
+      console.log(`Data received from Firebase (${sensorName}):`, data);
+      this.setState({ data });
+    }, (error) => {
+      console.error(`Error fetching data for ${sensorName}:`, error);
+    });
+  }
 
-    render() {
-        const { tooltipData } = this.state;
-        const { radioId } = this.props;
+  handleRadioChange = (sensorName) => {
+    this.setState({ selectedSensor: sensorName });
+    this.fetchSensorData(sensorName); // Fetch new data based on selected sensor
+  };
 
-        return (
-            <>
-                <OverlayTrigger
-                    placement="top"
-                    overlay={
-                        <Tooltip id={`tooltip-${radioId}`}>
-                            {tooltipData ? (
-                                <div>
-                                    <p><strong>Key:</strong> {radioId}</p>
-                                    <p><strong>pH:</strong> {tooltipData.ph}</p>
-                                    <p><strong>TDS:</strong> {tooltipData.tds}</p>
-                                    <p><strong>Water Flow:</strong> {tooltipData.water_flow}</p>
-                                    <p><strong>Water Level:</strong> {tooltipData.water_level}</p>
-                                </div>
-                            ) : (
-                                <p>Loading...</p>
-                            )}
-                        </Tooltip> 
-                    }
-                >
-                    <input
-                        type="radio"
-                        name="house"
-                        className={`radio-button radio-${radioId}`}
-                        onClick={this.handleRadioClick}
-                    />
-                </OverlayTrigger>
-            </>
-        );
-    }
+  renderTooltip = (sensorName, data) => (
+    <Tooltip id="sensor-tooltip">
+      <strong>{sensorName}</strong>: {data ? JSON.stringify(data) : 'No data available'}
+    </Tooltip>
+  );
+
+  render() {
+    const { data, selectedSensor } = this.state;
+
+    return (
+      <div className="container">
+        <div className="map-wrapper">
+          {/* Map Image */}
+          <img src='map.png' alt="Map" className="map-image" />
+
+          {/* Radio buttons overlaid on the map with tooltip display */}
+          {[1, 2, 3, 4].map((i) => {
+            const sensorName = `sensors${i}`;
+            return (
+              <OverlayTrigger
+                key={sensorName}
+                placement="top"
+                overlay={this.renderTooltip(sensorName, data)}
+              >
+                <input
+                  type="radio"
+                  name="sensor"
+                  className={`radio-button radio-${i}`}
+                  checked={selectedSensor === sensorName}
+                  onChange={() => this.handleRadioChange(sensorName)}
+                />
+              </OverlayTrigger>
+            );
+          })}
+        </div>
+
+        {/* Display Data Below the Map */}
+        {/* <div className="sensor-data">
+          <h3>Data from {selectedSensor}</h3>
+          <pre>{data ? JSON.stringify(data, null, 2) : 'No data available'}</pre>
+        </div> */}
+      </div>
+    );
+  }
 }
 
-export default Realtimedata;
-// import React from "react";
-// import StartFirebase from "../firebaseConfig";
-// import { ref, onValue } from "firebase/database";
-// import { Table } from "react-bootstrap";
-// const db = StartFirebase();
-// export class Realtimedata extends React.Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             tableData: []
-//         };
-//     }
-//     componentDidMount() {
-//         const dbref = ref(db, 'sensors2');
-//         onValue(dbref, (snapshot) => {
-//             let records = [];
-//             snapshot.forEach(childSnapshot => {
-//                 let keyName = childSnapshot.key;
-//                 let data = childSnapshot.val();
-//                 records.push({ "key": keyName, "data": data });
-//             });
-//             this.setState({ tableData:records});
-//         });
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <Table striped bordered hover>
-//                     <thead>
-//                         <tr>
-//                             <th>Key</th>
-//                             <th>Data</th>
-//                         </tr>
-//                     </thead>
-//                     <tbody>
-//                         {this.state.tableData.map((record, index) => (
-//                             <tr key={index}>
-//                                 <td>{record.key}</td>
-//                                 <td>{JSON.stringify(record.data)}</td>
-//                             </tr>
-//                         ))}
-//                     </tbody>
-//                 </Table>
-//             </div>
-//         );
-//     }
-// }
-// export default Realtimedata; 
+export default MapWithSensorData;
